@@ -79,6 +79,7 @@ public class Palindromo {
             }
 
         }
+        System.out.println("la frase tiene: "+ contador + " vocales");
     }
     public static void Encriptar(String palabra){
         String fraseLimpia = palabra.toLowerCase().replaceAll("\\s+", "");
@@ -88,7 +89,7 @@ public class Palindromo {
                 .replace('i','!')
                 .replace('o','*')
                 .replace('u','#');
-        System.out.println("frase encriptada" +fraseLimpia);
+        System.out.println("frase encriptada: " +fraseLimpia);
     }
 
     public static void Desencriptar(String palabra) {
@@ -99,6 +100,6 @@ public class Palindromo {
                 .replace('!', 'i')
                 .replace('*', 'o')
                 .replace('#', 'u');
-        System.out.println("frase desencriptada" + fraseLimpia);
+        System.out.println("frase desencriptada: " + fraseLimpia);
     }
 }
