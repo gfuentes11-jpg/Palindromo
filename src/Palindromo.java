@@ -1,67 +1,69 @@
 import java.util.Scanner;
 
 public class Palindromo {
-        public static void main(String[] args) {
-            menu();
-        }
+
+    public static void main(String[] args) {
+        menu();
+    }
 
     public static void menu() {
-        Scanner respuesta = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        String palabra = pedirFrase(scanner);
         int opcion;
-        Scanner frase = new Scanner(System.in);
-        java.lang.String palabra = pedirFrase(frase);
 
         do {
             mostrarMenu();
-            opcion = leerOpcion(respuesta, palabra);
+            opcion = leerOpcion(scanner);
+            ejecutarOpcion(opcion, palabra);
         } while (opcion != 5);
-        respuesta.close();
-
+        scanner.close();
     }
 
-    public static String pedirFrase(Scanner Lector){
-            System.out.println("Escriba la frase con la que quiera trabajar");
-            String frase = Lector.nextLine();
-            return frase;
+    public static String pedirFrase(Scanner lector) {
+        System.out.println("Escriba la frase con la que quiera trabajar:");
+        return lector.nextLine();
+    }
 
+    public static void mostrarMenu() {
+        System.out.println("1. Verificar si una frase es Palíndromo");
+        System.out.println("2. Contar vocales");
+        System.out.println("3. Encriptar una frase");
+        System.out.println("4. Desencriptar una frase");
+        System.out.println("5. Salir");
     }
-    public static void mostrarMenu(){
-            System.out.println("1. Verificar si una frase es Palindromo");
-            System.out.println("2. Contar vocales en una frase");
-            System.out.println("3. Encriptar una frase");
-            System.out.println("4. Desencriptar una frase");
-            System.out.println("5. Salir");
-    }
-    public static int leerOpcion(Scanner in, String palabra) {
-        System.out.println("Escoja el número correspondiente a la opción deseada:");
+
+    public static int leerOpcion(Scanner in) {
+        System.out.println("Escoja el numero correspondiente a la opcion deseada:");
         return in.nextInt();
-        }
-    public static void ejecutarOpcion(int respuesta, Scanner in) {
-            switch (respuesta) {
-                //case 1 -> verificarPalindromo();
-                //case 2 -> contarVocales();
-                //case 3 -> encriptarFrase();
-                //case 4 -> desencriptarFrase();
-                case 5 -> System.out.println("Nos vemos.");
-                default -> System.out.println("Opcion no valida");
-            }
     }
 
-    //public static Boolean verificarPalindromo(){
+    public static void ejecutarOpcion(int opcion, String palabra) {
+        switch (opcion) {
+            case 1 -> verificarYMostrarPalindromo(palabra);
+            case 2 -> contarVocales(palabra);
+            //case 3 -> System.out.println("");
+            //case 4 -> System.out.println("");
+            case 5 -> System.out.println("Nos vemos");
+            default -> System.out.println("Opcion no valida elija un numero del 1 al 5.");
+        }
+    }
 
-    //}
+    public static void verificarYMostrarPalindromo(String palabra) {
+        if (verificarPalindromo(palabra)) {
+            System.out.println("La frase es un palíndromo.");
+        } else {
+            System.out.println("La frase no es un palíndromo.");
+        }
+    }
 
-    //public static int contarVocales(){
+    public static boolean verificarPalindromo(String palabra) {
+        String fraseLimpia = palabra.toLowerCase().replaceAll("\\s+", "");
+        String invertida = new StringBuilder(fraseLimpia).reverse().toString();
+        return fraseLimpia.equals(invertida);
+    }
+    public static void contarVocales(String palabra){
+        for (int i = 0; i < palabra.length(); i++) {
 
-    //}
-
-    //public static String encriptarFrase(){
-
-    //}
-
-    //public static String desencriptarFrase(){
-
-    //}
-
+        }
+    }
 }
-
