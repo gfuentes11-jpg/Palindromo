@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Palindromo {
@@ -41,8 +44,8 @@ public class Palindromo {
         switch (opcion) {
             case 1 -> verificarYMostrarPalindromo(palabra);
             case 2 -> contarVocales(palabra);
-            //case 3 -> System.out.println("");
-            //case 4 -> System.out.println("");
+            case 3 -> Encriptar(palabra);
+            case 4 -> Desencriptar(palabra);
             case 5 -> System.out.println("Nos vemos");
             default -> System.out.println("Opcion no valida elija un numero del 1 al 5.");
         }
@@ -62,8 +65,40 @@ public class Palindromo {
         return fraseLimpia.equals(invertida);
     }
     public static void contarVocales(String palabra){
+        Character[] vocalesArray = {'a','e','i','o','u'};
+        List<Character> listaVocales = new ArrayList<>(Arrays.asList(vocalesArray));
+
+        int contador = 0;
+        palabra = palabra.toLowerCase();
+
         for (int i = 0; i < palabra.length(); i++) {
+            char caracter = palabra.charAt(i);
+
+            if (listaVocales.contains(caracter)) {
+                contador++;
+            }
 
         }
+    }
+    public static void Encriptar(String palabra){
+        String fraseLimpia = palabra.toLowerCase().replaceAll("\\s+", "");
+        fraseLimpia = fraseLimpia
+                .replace('a' , '@')
+                .replace('e','&')
+                .replace('i','!')
+                .replace('o','*')
+                .replace('u','#');
+        System.out.println("frase encriptada" +fraseLimpia);
+    }
+
+    public static void Desencriptar(String palabra) {
+        String fraseLimpia = palabra.toLowerCase().replaceAll("\\s+", "");
+        fraseLimpia = fraseLimpia
+                .replace('@', 'a')
+                .replace('&', 'e')
+                .replace('!', 'i')
+                .replace('*', 'o')
+                .replace('#', 'u');
+        System.out.println("frase desencriptada" + fraseLimpia);
     }
 }
